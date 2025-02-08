@@ -1,4 +1,3 @@
-
 // Very-Key Notes:
 // 
 // ----- ----- ----- ----- ----- ----- ----- -----
@@ -114,14 +113,14 @@
 // 22-1218
 // 
 // * TYJ used Medium 2KG-Torque Twin Motors can lift 200g w/o much strain, 250g with straining. Direct axle shaft best for max torque.  Avoid Dog-Gear for Max Torque.  These motors stop being strong enough to cut/break/severe/pinch off your finger.  ; )
-function screen_Show_Command_Func(screen_X_In: number, screen_Y_In: number) {
+function screen_Show_Command_Func (screen_X_In: number, screen_Y_In: number) {
     led.plotBrightness(screen_X_In, screen_Y_In, screenBrightness_Hi_DEFAULT_INT)
     // too long: 50ms, 100ms, 500ms
     basic.pause(20)
     led.unplot(screen_X_In, screen_Y_In)
     screen_Show_DiagnosticDashboard_Func()
 }
-function screen_Show_DiagnosticDashboard_Func() {
+function screen_Show_DiagnosticDashboard_Func () {
     screen_Clear_Fn(4, 4)
     doGroupChannelShow_Func()
 }
@@ -224,7 +223,7 @@ function screen_Show_DiagnosticDashboard_Func() {
 // 2021-0311
 // 
 // * Calibration: Swirl Around Like Panning for Gold, Moving Marble Around on Flat-Plane
-function setup_Network_Fn() {
+function setup_Network_Fn () {
     if (true) {
         // Only 20 Leds Available
         network_GroupChannel_MyBotAndController_BASE0_MAX_INT = 25
@@ -247,7 +246,7 @@ function setup_Network_Fn() {
 }
 input.onLogoEvent(TouchButtonEvent.LongPressed, function () {
     quest_Note_1.quest_Show_String_For_Note_Small_Func(
-        "23-0508-0740"
+    "23-0508-0740"
     )
     if (_debug_Show_Priority_Hi_Bool) {
         _debug_Show_Priority_Hi_Bool = false
@@ -263,10 +262,10 @@ input.onLogoEvent(TouchButtonEvent.LongPressed, function () {
 })
 input.onButtonPressed(Button.A, function () {
     quest_Note_3.quest_Show_String_For_Note_Big_Func(
-        "Reset Scores"
+    "Reset Scores"
     )
     quest_Note_2.quest_Show_String_For_Note_Small_Func(
-        "Reset all non-BotID fields to Zero"
+    "Reset all non-BotID fields to Zero"
     )
     scoreboard_BotsAll_ArrayList_2D_StopFreeze_Bool = true
     if (true) {
@@ -277,7 +276,7 @@ input.onButtonPressed(Button.A, function () {
             scoreboard_BotSingle_ArrayOfText_List_1D[9] = "0"
         }
         quest_Note_2.quest_Show_String_For_Note_Small_Func(
-            "Wait for reset to 0 to stabilize/complete"
+        "Wait for reset to 0 to stabilize/complete"
         )
         basic.clearScreen()
         for (let index = 0; index <= 2; index++) {
@@ -387,7 +386,7 @@ input.onButtonPressed(Button.A, function () {
 // 3000 no
 // 
 // * Using DFRobot Servo Pins not reliable, possibly since these are 3.3.v servos (not standard 5.0v servos), thus use MicroBit 'servo write pin Pxx' blocks for reliable 0-180 degrees.
-function setup_BotAndController_Fn() {
+function setup_BotAndController_Fn () {
     if (true) {
         _codeComment_AsText = "System Constants"
         if (true) {
@@ -436,36 +435,36 @@ function setup_BotAndController_Fn() {
     if (true) {
         network_DataPacket_Rcvd_FieldNames_ArrayListOfText = ["#", "L", "M"]
         scoreboard_ColumnFrontend_TitleNames_ArrayListOfText = [
-            "Bot#",
-            "Light+",
-            "Light=",
-            "Magnet+",
-            "Magnet="
+        "Bot#",
+        "Light+",
+        "Light=",
+        "Magnet+",
+        "Magnet="
         ]
         scoreboard_ColumnBackend_FieldNames_ArrayListOfText = [
-            "B#",
-            "L+",
-            "L=",
-            "M+",
-            "M="
+        "B#",
+        "L+",
+        "L=",
+        "M+",
+        "M="
         ]
         scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D = [
-            scoreboard_ColumnBackend_FieldNames_ArrayListOfText[0],
-            "0",
-            scoreboard_ColumnBackend_FieldNames_ArrayListOfText[1],
-            "0",
-            scoreboard_ColumnBackend_FieldNames_ArrayListOfText[2],
-            "0",
-            scoreboard_ColumnBackend_FieldNames_ArrayListOfText[3],
-            "0",
-            scoreboard_ColumnBackend_FieldNames_ArrayListOfText[4],
-            "0"
+        scoreboard_ColumnBackend_FieldNames_ArrayListOfText[0],
+        "0",
+        scoreboard_ColumnBackend_FieldNames_ArrayListOfText[1],
+        "0",
+        scoreboard_ColumnBackend_FieldNames_ArrayListOfText[2],
+        "0",
+        scoreboard_ColumnBackend_FieldNames_ArrayListOfText[3],
+        "0",
+        scoreboard_ColumnBackend_FieldNames_ArrayListOfText[4],
+        "0"
         ]
         scoreboard_BotSingle_ArrayOfText_List_1D2 = []
         scoreboard_BotsAll_ArrayListOfText_2D = []
     }
 }
-function doGroupChannelShow_Func() {
+function doGroupChannelShow_Func () {
     if (true) {
         doGroupChannel_Show_PerDigit_Func(network_GroupChannel_MyBotAndController_Digit_Hundreds_Int, 0, 0)
         doGroupChannel_Show_PerDigit_Func(network_GroupChannel_MyBotAndController_Digit_Tens_Int, 1, 0)
@@ -474,7 +473,7 @@ function doGroupChannelShow_Func() {
 }
 input.onButtonPressed(Button.AB, function () {
     quest_Note_3.quest_Show_String_For_Note_Big_Func(
-        "Switch Scoreboard Modes"
+    "Switch Scoreboard Modes"
     )
     if (scoreboard_Server_SerialPrint_RawScores_Bool) {
         scoreboard_Server_SerialPrint_RawScores_Bool = false
@@ -500,7 +499,7 @@ radio.onReceivedString(function (receivedString) {
             network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList = network_DataPacket_Rcvd_Str.split(",")
             network_DataPacket_Rcvd_MessageHeader_Key_AsBotId_Str = network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[0].substr(0, network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[0].indexOf(":"))
             quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                "Blank last argument (<< NOT SEEM TO WORK) -or- Use current string_length (which is more than enough) to insure read to 'end_of_string'"
+            "Blank last argument (<< NOT SEEM TO WORK) -or- Use current string_length (which is more than enough) to insure read to 'end_of_string'"
             )
             network_DataPacket_Rcvd_MessageHeader_Value_AsBotId_Str = network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[0].substr(network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[0].indexOf(":") + 1, network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[0].length)
         }
@@ -511,7 +510,7 @@ radio.onReceivedString(function (receivedString) {
                     serial.writeLine("* B1:" + scoreboard_botsingle_arraylistoftext_1d[0] + "|" + scoreboard_botsingle_arraylistoftext_1d[1] + "|" + network_DataPacket_Rcvd_MessageHeader_Value_AsBotId_Str + "|")
                 }
                 quest_Note_4.quest_Show_String_For_Note_Small_Func(
-                    "Hardcode 'Index = 1' to access actual 'BotId'"
+                "Hardcode 'Index = 1' to access actual 'BotId'"
                 )
                 if (scoreboard_botsingle_arraylistoftext_1d[1] == network_DataPacket_Rcvd_MessageHeader_Value_AsBotId_Str) {
                     scoreboard_Bot_Found_Bool = true
@@ -551,11 +550,11 @@ radio.onReceivedString(function (receivedString) {
                 for (let network_datapacket_rcvd_a_keyvaluepair of network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList) {
                     keyvaluepair_key = network_datapacket_rcvd_a_keyvaluepair.substr(0, network_datapacket_rcvd_a_keyvaluepair.indexOf(":"))
                     quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                        "Blank last argument (<< NOT SEEM TO WORK) -or- Use current string_length (which is more than enough) to insure read to 'end_of_string'"
+                    "Blank last argument (<< NOT SEEM TO WORK) -or- Use current string_length (which is more than enough) to insure read to 'end_of_string'"
                     )
                     keyvaluepair_value = network_datapacket_rcvd_a_keyvaluepair.substr(network_datapacket_rcvd_a_keyvaluepair.indexOf(":") + 1, network_datapacket_rcvd_a_keyvaluepair.length)
                     quest_Note_1.quest_Show_String_For_Note_Big_Func(
-                        "23-0518-0805"
+                    "23-0518-0805"
                     )
                     if (keyvaluepair_key == network_DataPacket_Rcvd_FieldNames_ArrayListOfText[0]) {
                         scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[1] = keyvaluepair_value
@@ -586,21 +585,21 @@ radio.onReceivedString(function (receivedString) {
                 serial.writeLine("* D2<")
             }
             quest_Note_1.quest_Show_String_For_Note_Big_Func(
-                "23-0518-0800"
+            "23-0518-0800"
             )
         }
         if (scoreboard_Server_SerialPrint_RawScores_Bool) {
             _codeComment_AsText = "* E: Forward to Server on Raspberry Pi"
-            serial.writeLine("" + (network_DataPacket_Rcvd_Str))
+            serial.writeLine(network_DataPacket_Rcvd_Str)
         }
     }
 })
 input.onButtonPressed(Button.B, function () {
     quest_Note_3.quest_Show_String_For_Note_Big_Func(
-        "Freeze Scores"
+    "Freeze Scores"
     )
     quest_Note_2.quest_Show_String_For_Note_Small_Func(
-        "Refrain from using Button 'A' since overlaps with Startup Press 'A' or 'B'"
+    "Refrain from using Button 'A' since overlaps with Startup Press 'A' or 'B'"
     )
     if (scoreboard_BotsAll_ArrayList_2D_StopFreeze_Bool) {
         scoreboard_BotsAll_ArrayList_2D_StopFreeze_Bool = false
@@ -614,7 +613,7 @@ input.onButtonPressed(Button.B, function () {
         scoreboard_BotsAll_ArrayList_2D_StopFreeze_Bool = true
     }
 })
-function screen_ScrollText_Fn(text_Str_In: string) {
+function screen_ScrollText_Fn (text_Str_In: string) {
     // Fragment the substrings to be interruptible between each 'show string' block
     parsed_Substrings_As_Array = text_Str_In.split(",")
     for (let parsed_Substring_As_Str of parsed_Substrings_As_Array) {
@@ -627,7 +626,7 @@ function screen_ScrollText_Fn(text_Str_In: string) {
 input.onLogoEvent(TouchButtonEvent.Pressed, function () {
     _codeComment_AsText = "23-0226-1430"
 })
-function screen_ModeStatus_Fn() {
+function screen_ModeStatus_Fn () {
     if (scoreboard_Server_SerialPrint_RawScores_Bool) {
         if (true) {
             led.plot(0, 2)
@@ -648,14 +647,14 @@ function screen_ModeStatus_Fn() {
         }
     }
 }
-function screen_Clear_Fn(row_X_Max_In: number, col_Y_Max_In: number) {
+function screen_Clear_Fn (row_X_Max_In: number, col_Y_Max_In: number) {
     for (let index_X = 0; index_X <= row_X_Max_In; index_X++) {
         for (let index_Y = 0; index_Y <= col_Y_Max_In; index_Y++) {
             led.unplot(index_X, index_Y)
         }
     }
 }
-function doGroupChannel_Show_PerDigit_Func(singleDigit_In: number, OffsetX_In: number, OffsetY_In: number) {
+function doGroupChannel_Show_PerDigit_Func (singleDigit_In: number, OffsetX_In: number, OffsetY_In: number) {
     for (let index222 = 0; index222 <= singleDigit_In - 1; index222++) {
         led.plotBrightness(Math.idiv(index222, 5) + OffsetX_In, index222 % 5 + OffsetY_In, screenBrightness_MI_INT)
     }
@@ -731,19 +730,19 @@ if (true) {
     scoreboard_Server_SerialPrint_FormattedScores_Bool = false
     scoreboard_Server_SerialPrint_RawScores_Bool = true
     quest_Note_4.quest_Show_String_For_Note_Small_Func(
-        "'Debug On' for Testing"
+    "'Debug On' for Testing"
     )
     _debug_Show_Priority_Hi_Bool = false
 }
 loops.everyInterval(2000, function () {
     quest_Note_3.quest_Show_String_For_Note_Big_Func(
-        "Network Heartbeat"
+    "Network Heartbeat"
     )
     quest_Note_2.quest_Show_String_For_Note_Small_Func(
-        "Little Less Frequent to Not Tie Up Much Resources"
+    "Little Less Frequent to Not Tie Up Much Resources"
     )
     quest_Note_1.quest_Show_String_For_Note_Small_Func(
-        "Heartbeat 'I'm Alive' Status"
+    "Heartbeat 'I'm Alive' Status"
     )
     led.toggle(0, 4)
 })
@@ -767,7 +766,22 @@ loops.everyInterval(2000, function () {
 })
 basic.forever(function () {
     quest_Note_1.quest_Show_String_For_Note_Big_Func(
-        "23-0518-0720"
+    "23-0518-0710"
+    )
+})
+basic.forever(function () {
+    _codeComment_AsText = "23-0226-1430"
+})
+basic.forever(function () {
+    screenBrightness_Heartbeat_Count_Int += screenBrightness_Heartbeat_Count_DELTA_INT
+    // * Use '<= and >=' vs '< and >' since do not want to go past boundaries when changing values
+    if (screenBrightness_Heartbeat_Count_Int <= screenBrightness_HeartBeat_Count_MIN_INT || screenBrightness_Heartbeat_Count_Int >= screenBrightness_Heartbeat_Count_MAX_INT) {
+        screenBrightness_Heartbeat_Count_DELTA_INT = -1 * screenBrightness_Heartbeat_Count_DELTA_INT
+    }
+})
+basic.forever(function () {
+    quest_Note_1.quest_Show_String_For_Note_Big_Func(
+    "23-0518-0720"
     )
     if (_system_BotAndController_Mode_Int == _system_BotAndController_Mode_As_SETUP_INT) {
         basic.showLeds(`
@@ -782,27 +796,12 @@ basic.forever(function () {
         _system_BotAndController_Mode_Int = _system_BotAndController_Mode_As_COMMAND_AS_MAIN_MODE_INT
     }
 })
-basic.forever(function () {
-    quest_Note_1.quest_Show_String_For_Note_Big_Func(
-        "23-0518-0710"
-    )
-})
-basic.forever(function () {
-    _codeComment_AsText = "23-0226-1430"
-})
-basic.forever(function () {
-    screenBrightness_Heartbeat_Count_Int += screenBrightness_Heartbeat_Count_DELTA_INT
-    // * Use '<= and >=' vs '< and >' since do not want to go past boundaries when changing values
-    if (screenBrightness_Heartbeat_Count_Int <= screenBrightness_HeartBeat_Count_MIN_INT || screenBrightness_Heartbeat_Count_Int >= screenBrightness_Heartbeat_Count_MAX_INT) {
-        screenBrightness_Heartbeat_Count_DELTA_INT = -1 * screenBrightness_Heartbeat_Count_DELTA_INT
-    }
-})
 loops.everyInterval(5000, function () {
     quest_Note_3.quest_Show_String_For_Note_Big_Func(
-        "Show Mode Status"
+    "Show Mode Status"
     )
     quest_Note_2.quest_Show_String_For_Note_Small_Func(
-        "Less Frequent to Not Tie Up Much Resources"
+    "Less Frequent to Not Tie Up Much Resources"
     )
     screen_ModeStatus_Fn()
 })
