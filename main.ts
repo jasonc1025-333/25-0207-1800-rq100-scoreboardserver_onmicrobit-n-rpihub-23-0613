@@ -1,3 +1,8 @@
+// jwc IMPORTANT NOTES
+// jwc 25-0210-1400 * network_DataPacket_Rcvd_FieldNames_ArrayListOfText = ["#", "L", "M"]
+//                    * network_DataPacket_Rcvd_FieldNames_ArrayListOfText = ["A", "L", "R"]
+//                    * network_DataPacket_Rcvd_FieldNames_Login_ArrayListOfText = ["Z", "L", "R"]
+
 // Very-Key Notes:
 // 
 // ----- ----- ----- ----- ----- ----- ----- -----
@@ -433,7 +438,11 @@ function setup_BotAndController_Fn () {
         }
     }
     if (true) {
-        network_DataPacket_Rcvd_FieldNames_ArrayListOfText = ["#", "L", "M"]
+        //// jwc 25-0210-1400 o network_DataPacket_Rcvd_FieldNames_ArrayListOfText = ["#", "L", "M"]
+        //// jwc y network_DataPacket_Rcvd_FieldNames_ArrayListOfText = ["A", "L", "R"]
+        network_DataPacket_Rcvd_FieldNames_ArrayListOfText = ["A", "L", "R"]
+        network_DataPacket_Rcvd_FieldNames_Login_ArrayListOfText = ["Z", "L", "R"]
+
         scoreboard_ColumnFrontend_TitleNames_ArrayListOfText = [
         "Bot#",
         "Light+",
@@ -564,6 +573,8 @@ radio.onReceivedString(function (receivedString) {
                     } else if (keyvaluepair_key == network_DataPacket_Rcvd_FieldNames_ArrayListOfText[2]) {
                         scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[7] = keyvaluepair_value
                         scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[9] = keyvaluepair_value
+                    } else if (keyvaluepair_key == network_DataPacket_Rcvd_FieldNames_Login_ArrayListOfText[0]) {
+                        scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[1] = keyvaluepair_value
                     } else {
                         serial.writeLine("*** ERROR: 2023-0517-1450 ***")
                     }
@@ -672,6 +683,7 @@ let scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D: string[] = []
 let scoreboard_ColumnBackend_FieldNames_ArrayListOfText: string[] = []
 let scoreboard_ColumnFrontend_TitleNames_ArrayListOfText: string[] = []
 let network_DataPacket_Rcvd_FieldNames_ArrayListOfText: string[] = []
+let network_DataPacket_Rcvd_FieldNames_Login_ArrayListOfText: string[] = []
 let _debug_Show_CpuCycleDelay_MILLISEC_INT = 0
 let screenBrightness_Heartbeat_Count_DELTA_INT = 0
 let screenBrightness_HeartBeat_Count_MIN_INT = 0
