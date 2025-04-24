@@ -1,12 +1,3 @@
-/**
- * jwc IMPORTANT NOTES
- * 
- * jwc 25-0210-1400 * network_DataPacket_Rcvd_FieldNames_ArrayListOfText = ["#", "L", "M"]
- * 
- * * network_DataPacket_Rcvd_FieldNames_ArrayListOfText = ["A", "L", "R"]
- * 
- * * network_DataPacket_Rcvd_FieldNames_Login_ArrayListOfText = ["Z", "L", "R"]
- */
 // Very-Key Notes:
 // 
 // ----- ----- ----- ----- ----- ----- ----- -----
@@ -496,6 +487,15 @@ input.onButtonPressed(Button.AB, function () {
     }
     screen_ModeStatus_Fn()
 })
+/**
+ * jwc IMPORTANT NOTES
+ * 
+ * jwc 25-0210-1400 * network_DataPacket_Rcvd_FieldNames_ArrayListOfText = ["#", "L", "M"]
+ * 
+ * * network_DataPacket_Rcvd_FieldNames_ArrayListOfText = ["A", "L", "R"]
+ * 
+ * * network_DataPacket_Rcvd_FieldNames_Login_ArrayListOfText = ["Z", "L", "R"]
+ */
 // To Insure Both at Synchronized States, Both Bot and Controller Must Start/Re-Start at 'setup_and_startup' State (e.g. for Manual Config Overrides, Debug-Serial-Prints, etc. to work)
 // * Important News
 // ** 'receivedstring': 18 char max
@@ -534,11 +534,23 @@ radio.onReceivedString(function (receivedString) {
                         serial.writeLine("* C1<")
                     }
                     if (true) {
+                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                        "L+"
+                        )
                         scoreboard_botsingle_arraylistoftext_1d[3] = network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[1].substr(network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[1].indexOf(":") + 1, network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[1].length)
+                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                        "L="
+                        )
                         scoreboard_botsingle_arraylistoftext_1d[5] = convertToText(parseFloat(scoreboard_botsingle_arraylistoftext_1d[3]) + parseFloat(scoreboard_botsingle_arraylistoftext_1d[5]))
                     }
                     if (true) {
+                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                        "M+"
+                        )
                         scoreboard_botsingle_arraylistoftext_1d[7] = network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[2].substr(network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[2].indexOf(":") + 1, network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[2].length)
+                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                        "M="
+                        )
                         scoreboard_botsingle_arraylistoftext_1d[9] = convertToText(parseFloat(scoreboard_botsingle_arraylistoftext_1d[7]) + parseFloat(scoreboard_botsingle_arraylistoftext_1d[9]))
                     }
                     if (_debug_Show_Priority_Hi_Bool) {
@@ -571,15 +583,27 @@ radio.onReceivedString(function (receivedString) {
                     if (keyvaluepair_key == network_DataPacket_Rcvd_FieldNames_ArrayListOfText[0]) {
                         scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[1] = keyvaluepair_value
                     } else if (keyvaluepair_key == network_DataPacket_Rcvd_FieldNames_ArrayListOfText[1]) {
+                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                        "L+"
+                        )
                         scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[3] = keyvaluepair_value
+                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                        "L="
+                        )
                         scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[5] = keyvaluepair_value
                     } else if (keyvaluepair_key == network_DataPacket_Rcvd_FieldNames_ArrayListOfText[2]) {
+                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                        "M+"
+                        )
                         scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[7] = keyvaluepair_value
+                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                        "M="
+                        )
                         scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[9] = keyvaluepair_value
                     } else if (keyvaluepair_key == network_DataPacket_Rcvd_FieldNames_Login_ArrayListOfText[0]) {
                         scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[1] = keyvaluepair_value
                     } else {
-                        serial.writeLine("*** ERROR: 2023-0517-1450 ***")
+                        serial.writeLine("*** ERROR: 2023-0517-1450: 'keyvaluepair_key' Not Recognized ***")
                     }
                 }
                 if (_debug_Show_Priority_Hi_Bool) {
