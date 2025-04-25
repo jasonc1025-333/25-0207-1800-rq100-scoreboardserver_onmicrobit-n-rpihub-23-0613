@@ -813,7 +813,10 @@ loops.everyInterval(2000, function () {
 })
 loops.everyInterval(2000, function () {
     if (!(scoreboard_BotsAll_ArrayList_2D_StopFreeze_Bool) && scoreboard_Server_SerialPrint_FormattedScores_Bool) {
-        serial.writeLine("----- RoboQuest Scoreboard Server -----")
+        if (true) {
+            serial.writeLine("----- RoboQuest Scoreboard Server -----")
+        }
+        serial.writeLine("----- RoboQuest X-Ray Dashboard -----")
         for (let value4 of scoreboard_ColumnFrontend_TitleNames_ArrayListOfText) {
             serial.writeString("" + "                    ".substr(0, 20 - value4.length) + value4)
         }
