@@ -437,12 +437,21 @@ function setup_BotAndController_Fn () {
         // // jwc y network_DataPacket_Rcvd_FieldNames_ArrayListOfText = ["A", "L", "R"]
         network_DataPacket_Rcvd_FieldNames_ArrayListOfText = ["A", "L", "R"]
         network_DataPacket_Rcvd_FieldNames_Login_ArrayListOfText = ["Z", "L", "R"]
+        if (false) {
+            scoreboard_ColumnFrontend_TitleNames_ArrayListOfText = [
+            "Bot#",
+            "Light+",
+            "Light=",
+            "Magnet+",
+            "Magnet="
+            ]
+        }
         scoreboard_ColumnFrontend_TitleNames_ArrayListOfText = [
         "Bot#",
-        "Light+",
-        "Light=",
-        "Magnet+",
-        "Magnet="
+        "Servo_Motor: L",
+        "Servo_Motor: R",
+        "Light Sensor:",
+        "AI-Cam Sensor:"
         ]
         scoreboard_ColumnBackend_FieldNames_ArrayListOfText = [
         "B#",
@@ -535,23 +544,32 @@ radio.onReceivedString(function (receivedString) {
                     }
                     if (true) {
                         quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                        "L+"
+                        "L,R"
                         )
                         scoreboard_botsingle_arraylistoftext_1d[3] = network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[1].substr(network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[1].indexOf(":") + 1, network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[1].length)
-                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                        "L="
-                        )
-                        scoreboard_botsingle_arraylistoftext_1d[5] = convertToText(parseFloat(scoreboard_botsingle_arraylistoftext_1d[3]) + parseFloat(scoreboard_botsingle_arraylistoftext_1d[5]))
+                        scoreboard_botsingle_arraylistoftext_1d[4] = network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[1].substr(network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[1].indexOf(":") + 1, network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[1].length)
                     }
                     if (true) {
-                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                        "M+"
-                        )
-                        scoreboard_botsingle_arraylistoftext_1d[7] = network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[2].substr(network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[2].indexOf(":") + 1, network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[2].length)
-                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                        "M="
-                        )
-                        scoreboard_botsingle_arraylistoftext_1d[9] = convertToText(parseFloat(scoreboard_botsingle_arraylistoftext_1d[7]) + parseFloat(scoreboard_botsingle_arraylistoftext_1d[9]))
+                        if (false) {
+                            quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                            "L+"
+                            )
+                            scoreboard_botsingle_arraylistoftext_1d[3] = network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[1].substr(network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[1].indexOf(":") + 1, network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[1].length)
+                            quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                            "L="
+                            )
+                            scoreboard_botsingle_arraylistoftext_1d[5] = convertToText(parseFloat(scoreboard_botsingle_arraylistoftext_1d[3]) + parseFloat(scoreboard_botsingle_arraylistoftext_1d[5]))
+                        }
+                        if (false) {
+                            quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                            "M+"
+                            )
+                            scoreboard_botsingle_arraylistoftext_1d[7] = network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[2].substr(network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[2].indexOf(":") + 1, network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[2].length)
+                            quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                            "M="
+                            )
+                            scoreboard_botsingle_arraylistoftext_1d[9] = convertToText(parseFloat(scoreboard_botsingle_arraylistoftext_1d[7]) + parseFloat(scoreboard_botsingle_arraylistoftext_1d[9]))
+                        }
                     }
                     if (_debug_Show_Priority_Hi_Bool) {
                         serial.writeString("* C2>")
@@ -584,22 +602,30 @@ radio.onReceivedString(function (receivedString) {
                         scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[1] = keyvaluepair_value
                     } else if (keyvaluepair_key == network_DataPacket_Rcvd_FieldNames_ArrayListOfText[1]) {
                         quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                        "L+"
+                        "ML"
                         )
                         scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[3] = keyvaluepair_value
-                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                        "L="
-                        )
-                        scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[5] = keyvaluepair_value
+                        if (false) {
+                            quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                            "L="
+                            )
+                            scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[5] = keyvaluepair_value
+                        }
                     } else if (keyvaluepair_key == network_DataPacket_Rcvd_FieldNames_ArrayListOfText[2]) {
                         quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                        "M+"
+                        "MR"
                         )
-                        scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[7] = keyvaluepair_value
-                        quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                        "M="
-                        )
-                        scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[9] = keyvaluepair_value
+                        scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[4] = keyvaluepair_value
+                        if (false) {
+                            quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                            "M+"
+                            )
+                            scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[7] = keyvaluepair_value
+                            quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                            "M="
+                            )
+                            scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[9] = keyvaluepair_value
+                        }
                     } else if (keyvaluepair_key == network_DataPacket_Rcvd_FieldNames_Login_ArrayListOfText[0]) {
                         scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[1] = keyvaluepair_value
                     } else {
