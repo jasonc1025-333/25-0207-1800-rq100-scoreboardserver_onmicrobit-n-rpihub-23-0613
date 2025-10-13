@@ -629,7 +629,11 @@ radio.onReceivedString(function (receivedString) {
                     } else if (keyvaluepair_key == network_DataPacket_Rcvd_FieldNames_Login_ArrayListOfText[0]) {
                         scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[1] = keyvaluepair_value
                     } else {
-                        serial.writeLine("*** ERROR: 2023-0517-1450: 'keyvaluepair_key' Not Recognized ***")
+                        if (false) {
+                            serial.writeLine("*** ERROR: 2023-0517-1450: 'keyvaluepair_key' Not Recognized ***")
+                        } else {
+                            serial.writeLine("* Info: 25-1012-2000: Unknown 'keyvaluepair_key' ")
+                        }
                     }
                 }
                 if (_debug_Show_Priority_Hi_Bool) {
