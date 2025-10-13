@@ -632,7 +632,10 @@ radio.onReceivedString(function (receivedString) {
                         if (false) {
                             serial.writeLine("*** ERROR: 2023-0517-1450: 'keyvaluepair_key' Not Recognized ***")
                         } else {
-                            serial.writeLine("* Info: 25-1012-2000: Unknown 'keyvaluepair_key' ")
+                            quest_Note_4.quest_Show_String_For_Note_Small_Func(
+                            "Tolerated Error for Digital-Xay: Fix Later"
+                            )
+                            serial.writeString("* Key?: ")
                         }
                     }
                 }
