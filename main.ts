@@ -1,3 +1,12 @@
+/**
+ * jwc IMPORTANT NOTES
+ * 
+ * jwc 25-0210-1400 * network_DataPacket_Rcvd_FieldNames_ArrayListOfText = ["#", "L", "M"]
+ * 
+ * * network_DataPacket_Rcvd_FieldNames_ArrayListOfText = ["A", "L", "R"]
+ * 
+ * * network_DataPacket_Rcvd_FieldNames_Login_ArrayListOfText = ["Z", "L", "R"]
+ */
 // Very-Key Notes:
 // 
 // ----- ----- ----- ----- ----- ----- ----- -----
@@ -496,15 +505,6 @@ input.onButtonPressed(Button.AB, function () {
     }
     screen_ModeStatus_Fn()
 })
-/**
- * jwc IMPORTANT NOTES
- * 
- * jwc 25-0210-1400 * network_DataPacket_Rcvd_FieldNames_ArrayListOfText = ["#", "L", "M"]
- * 
- * * network_DataPacket_Rcvd_FieldNames_ArrayListOfText = ["A", "L", "R"]
- * 
- * * network_DataPacket_Rcvd_FieldNames_Login_ArrayListOfText = ["Z", "L", "R"]
- */
 // To Insure Both at Synchronized States, Both Bot and Controller Must Start/Re-Start at 'setup_and_startup' State (e.g. for Manual Config Overrides, Debug-Serial-Prints, etc. to work)
 // * Important News
 // ** 'receivedstring': 18 char max
