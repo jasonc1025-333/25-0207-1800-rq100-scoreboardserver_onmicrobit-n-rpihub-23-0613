@@ -492,17 +492,7 @@ function doGroupChannelShow_Func () {
     }
 }
 input.onButtonPressed(Button.AB, function () {
-    quest_Note_3.quest_Show_String_For_Note_Big_Func(
-    "Switch Scoreboard Modes"
-    )
-    if (scoreboard_Server_SerialPrint_RawScores_Bool) {
-        scoreboard_Server_SerialPrint_RawScores_Bool = false
-        scoreboard_Server_SerialPrint_FormattedScores_Bool = true
-    } else {
-        scoreboard_Server_SerialPrint_RawScores_Bool = true
-        scoreboard_Server_SerialPrint_FormattedScores_Bool = false
-    }
-    screen_ModeStatus_Fn()
+    _codeComment_AsText = "23-0226-1430"
 })
 // To Insure Both at Synchronized States, Both Bot and Controller Must Start/Re-Start at 'setup_and_startup' State (e.g. for Manual Config Overrides, Debug-Serial-Prints, etc. to work)
 // * Important News
@@ -621,6 +611,29 @@ radio.onReceivedString(function (receivedString) {
 })
 input.onButtonPressed(Button.B, function () {
     quest_Note_3.quest_Show_String_For_Note_Big_Func(
+    "Switch Scoreboard Modes"
+    )
+    if (scoreboard_Server_SerialPrint_RawScores_Bool) {
+        scoreboard_Server_SerialPrint_RawScores_Bool = false
+        scoreboard_Server_SerialPrint_FormattedScores_Bool = true
+    } else {
+        scoreboard_Server_SerialPrint_RawScores_Bool = true
+        scoreboard_Server_SerialPrint_FormattedScores_Bool = false
+    }
+    screen_ModeStatus_Fn()
+})
+function screen_ScrollText_Fn (text_Str_In: string) {
+    // Fragment the substrings to be interruptible between each 'show string' block
+    parsed_Substrings_As_Array = text_Str_In.split(",")
+    for (let parsed_Substring_As_Str of parsed_Substrings_As_Array) {
+        basic.showString("" + (parsed_Substring_As_Str))
+        if (_system_BotAndController_Mode_Int != _system_BotAndController_Mode_As_SETUP_INT) {
+            break;
+        }
+    }
+}
+input.onLogoEvent(TouchButtonEvent.Pressed, function () {
+    quest_Note_3.quest_Show_String_For_Note_Big_Func(
     "Freeze Scores"
     )
     quest_Note_2.quest_Show_String_For_Note_Small_Func(
@@ -637,19 +650,6 @@ input.onButtonPressed(Button.B, function () {
         basic.pause(2000)
         scoreboard_BotsAll_ArrayList_2D_StopFreeze_Bool = true
     }
-})
-function screen_ScrollText_Fn (text_Str_In: string) {
-    // Fragment the substrings to be interruptible between each 'show string' block
-    parsed_Substrings_As_Array = text_Str_In.split(",")
-    for (let parsed_Substring_As_Str of parsed_Substrings_As_Array) {
-        basic.showString("" + (parsed_Substring_As_Str))
-        if (_system_BotAndController_Mode_Int != _system_BotAndController_Mode_As_SETUP_INT) {
-            break;
-        }
-    }
-}
-input.onLogoEvent(TouchButtonEvent.Pressed, function () {
-    _codeComment_AsText = "23-0226-1430"
 })
 function screen_ModeStatus_Fn () {
     if (scoreboard_Server_SerialPrint_RawScores_Bool) {
@@ -684,6 +684,9 @@ function doGroupChannel_Show_PerDigit_Func (singleDigit_In: number, OffsetX_In: 
         led.plotBrightness(Math.idiv(index222, 5) + OffsetX_In, index222 % 5 + OffsetY_In, screenBrightness_MI_INT)
     }
 }
+/**
+ * // jwc 26-0118-1820 n let scoreboard_BotsAll_ArrayListOfText_2D: Array[] = []
+ */
 let parsed_Substrings_As_Array: string[] = []
 let keyvaluepair_value = ""
 let keyvaluepair_key = ""
@@ -712,8 +715,7 @@ let _bool_TRUE_1_ForDigitalPinReadWriteOnly_INT = 0
 let _bool_FALSE_0_ForDigitalPinReadWriteOnly_INT = 0
 let _system_BotAndController_Mode_As_COMMAND_AS_MAIN_MODE_INT = 0
 let _system_BotAndController_Mode_As_SETUP_INT = 0
-//// jwc let scoreboard_BotsAll_ArrayListOfText_2D: Array[] = []
-let scoreboard_BotsAll_ArrayListOfText_2D: Array<string[]> = []
+let scoreboard_BotsAll_ArrayListOfText_2D: string[][] = []
 let network_HiMessage_Frequency_SEC_INT = 0
 let network_GroupChannel_MyBotAndController_Digit_Ones_Int = 0
 let network_GroupChannel_MyBotAndController_Digit_Tens_Int = 0
