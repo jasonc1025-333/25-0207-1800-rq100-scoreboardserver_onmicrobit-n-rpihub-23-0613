@@ -446,28 +446,23 @@ function setup_BotAndController_Fn () {
         // // jwc y network_DataPacket_Rcvd_FieldNames_ArrayListOfText = ["A", "L", "R"]
         network_DataPacket_Rcvd_FieldNames_ArrayListOfText = ["A", "L", "R"]
         network_DataPacket_Rcvd_FieldNames_Login_ArrayListOfText = ["Z", "L", "R"]
-        if (false) {
-            scoreboard_ColumnFrontend_TitleNames_ArrayListOfText = [
-            "Bot#",
-            "Light+",
-            "Light=",
-            "Magnet+",
-            "Magnet="
-            ]
-        }
         scoreboard_ColumnFrontend_TitleNames_ArrayListOfText = [
         "Bot#",
-        "Servo_Motor: L",
-        "Servo_Motor: R",
-        "Light Sensor:",
-        "AI-Cam Sensor:"
+        "\"Wheel_L\"",
+        "\"Wheel_R\"",
+        "\"Wheel_2_L\"",
+        "\"Wheel_2_R",
+        "Arm_L",
+        "Arm_R"
         ]
         scoreboard_ColumnBackend_FieldNames_ArrayListOfText = [
-        "B#",
-        "L+",
-        "L=",
-        "M+",
-        "M="
+        "",
+        "S1L",
+        "S0R",
+        "S3L",
+        "S2R",
+        "S7L",
+        "S6R"
         ]
         scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D = [
         scoreboard_ColumnBackend_FieldNames_ArrayListOfText[0],
@@ -479,6 +474,10 @@ function setup_BotAndController_Fn () {
         scoreboard_ColumnBackend_FieldNames_ArrayListOfText[3],
         "0",
         scoreboard_ColumnBackend_FieldNames_ArrayListOfText[4],
+        "0",
+        scoreboard_ColumnBackend_FieldNames_ArrayListOfText[5],
+        "0",
+        scoreboard_ColumnBackend_FieldNames_ArrayListOfText[6],
         "0"
         ]
         scoreboard_BotSingle_ArrayOfText_List_1D2 = []
@@ -549,35 +548,6 @@ radio.onReceivedString(function (receivedString) {
                         scoreboard_botsingle_arraylistoftext_1d[3] = network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[1].substr(network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[1].indexOf(":") + 1, network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[1].length)
                         scoreboard_botsingle_arraylistoftext_1d[4] = network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[1].substr(network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[1].indexOf(":") + 1, network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[1].length)
                     }
-                    if (true) {
-                        if (false) {
-                            quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                            "L+"
-                            )
-                            scoreboard_botsingle_arraylistoftext_1d[3] = network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[1].substr(network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[1].indexOf(":") + 1, network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[1].length)
-                            quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                            "L="
-                            )
-                            scoreboard_botsingle_arraylistoftext_1d[5] = convertToText(parseFloat(scoreboard_botsingle_arraylistoftext_1d[3]) + parseFloat(scoreboard_botsingle_arraylistoftext_1d[5]))
-                        }
-                        if (false) {
-                            quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                            "M+"
-                            )
-                            scoreboard_botsingle_arraylistoftext_1d[7] = network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[2].substr(network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[2].indexOf(":") + 1, network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[2].length)
-                            quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                            "M="
-                            )
-                            scoreboard_botsingle_arraylistoftext_1d[9] = convertToText(parseFloat(scoreboard_botsingle_arraylistoftext_1d[7]) + parseFloat(scoreboard_botsingle_arraylistoftext_1d[9]))
-                        }
-                    }
-                    if (_debug_Show_Priority_Hi_Bool) {
-                        serial.writeString("* C2>")
-                        for (let scoreboard_botsingle_columndata_1d2 of scoreboard_botsingle_arraylistoftext_1d) {
-                            serial.writeString("" + scoreboard_botsingle_columndata_1d2 + "|")
-                        }
-                        serial.writeLine("* C2<")
-                    }
                 }
             }
         }
@@ -585,7 +555,7 @@ radio.onReceivedString(function (receivedString) {
             if (true) {
                 scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D = []
                 if (true) {
-                    for (let index = 0; index < 10; index++) {
+                    for (let index = 0; index < 14; index++) {
                         scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D.push("")
                     }
                 }
@@ -605,27 +575,11 @@ radio.onReceivedString(function (receivedString) {
                         "ML"
                         )
                         scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[3] = keyvaluepair_value
-                        if (false) {
-                            quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                            "L="
-                            )
-                            scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[5] = keyvaluepair_value
-                        }
                     } else if (keyvaluepair_key == network_DataPacket_Rcvd_FieldNames_ArrayListOfText[2]) {
                         quest_Note_1.quest_Show_String_For_Note_Small_Func(
                         "MR"
                         )
                         scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[4] = keyvaluepair_value
-                        if (false) {
-                            quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                            "M+"
-                            )
-                            scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[7] = keyvaluepair_value
-                            quest_Note_1.quest_Show_String_For_Note_Small_Func(
-                            "M="
-                            )
-                            scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[9] = keyvaluepair_value
-                        }
                     } else if (keyvaluepair_key == network_DataPacket_Rcvd_FieldNames_Login_ArrayListOfText[0]) {
                         scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[1] = keyvaluepair_value
                     } else {
@@ -758,7 +712,8 @@ let _bool_TRUE_1_ForDigitalPinReadWriteOnly_INT = 0
 let _bool_FALSE_0_ForDigitalPinReadWriteOnly_INT = 0
 let _system_BotAndController_Mode_As_COMMAND_AS_MAIN_MODE_INT = 0
 let _system_BotAndController_Mode_As_SETUP_INT = 0
-let scoreboard_BotsAll_ArrayListOfText_2D: string[][] = []
+//// jwc let scoreboard_BotsAll_ArrayListOfText_2D: Array[] = []
+let scoreboard_BotsAll_ArrayListOfText_2D: Array<string[]> = []
 let network_HiMessage_Frequency_SEC_INT = 0
 let network_GroupChannel_MyBotAndController_Digit_Ones_Int = 0
 let network_GroupChannel_MyBotAndController_Digit_Tens_Int = 0
@@ -840,19 +795,19 @@ loops.everyInterval(2000, function () {
     }
 })
 basic.forever(function () {
+    screenBrightness_Heartbeat_Count_Int += screenBrightness_Heartbeat_Count_DELTA_INT
+    // * Use '<= and >=' vs '< and >' since do not want to go past boundaries when changing values
+    if (screenBrightness_Heartbeat_Count_Int <= screenBrightness_HeartBeat_Count_MIN_INT || screenBrightness_Heartbeat_Count_Int >= screenBrightness_Heartbeat_Count_MAX_INT) {
+        screenBrightness_Heartbeat_Count_DELTA_INT = -1 * screenBrightness_Heartbeat_Count_DELTA_INT
+    }
+})
+basic.forever(function () {
     quest_Note_1.quest_Show_String_For_Note_Big_Func(
     "23-0518-0710"
     )
 })
 basic.forever(function () {
     _codeComment_AsText = "23-0226-1430"
-})
-basic.forever(function () {
-    screenBrightness_Heartbeat_Count_Int += screenBrightness_Heartbeat_Count_DELTA_INT
-    // * Use '<= and >=' vs '< and >' since do not want to go past boundaries when changing values
-    if (screenBrightness_Heartbeat_Count_Int <= screenBrightness_HeartBeat_Count_MIN_INT || screenBrightness_Heartbeat_Count_Int >= screenBrightness_Heartbeat_Count_MAX_INT) {
-        screenBrightness_Heartbeat_Count_DELTA_INT = -1 * screenBrightness_Heartbeat_Count_DELTA_INT
-    }
 })
 basic.forever(function () {
     quest_Note_1.quest_Show_String_For_Note_Big_Func(
@@ -869,6 +824,139 @@ basic.forever(function () {
         quest_Timer.quest_Set_ContinueCurrentState_CountdownTimer_Func(2, quest_Time_Units_Enum.Seconds)
         screen_Show_DiagnosticDashboard_Func()
         _system_BotAndController_Mode_Int = _system_BotAndController_Mode_As_COMMAND_AS_MAIN_MODE_INT
+    }
+})
+basic.forever(function () {
+    if (false) {
+        let scoreboard_botsingle_arraylistoftext_1d: string[] = []
+        if (false) {
+            if (false) {
+                quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                "L+"
+                )
+                scoreboard_botsingle_arraylistoftext_1d[3] = network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[1].substr(network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[1].indexOf(":") + 1, network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[1].length)
+                quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                "L="
+                )
+                scoreboard_botsingle_arraylistoftext_1d[5] = convertToText(parseFloat(scoreboard_botsingle_arraylistoftext_1d[3]) + parseFloat(scoreboard_botsingle_arraylistoftext_1d[5]))
+            }
+            if (false) {
+                quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                "M+"
+                )
+                scoreboard_botsingle_arraylistoftext_1d[7] = network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[2].substr(network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[2].indexOf(":") + 1, network_DataPacket_Rcvd_ParsedIntoKeyValuePairs_ArrayList[2].length)
+                quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                "M="
+                )
+                scoreboard_botsingle_arraylistoftext_1d[9] = convertToText(parseFloat(scoreboard_botsingle_arraylistoftext_1d[7]) + parseFloat(scoreboard_botsingle_arraylistoftext_1d[9]))
+            }
+        }
+        if (_debug_Show_Priority_Hi_Bool) {
+            serial.writeString("* C2>")
+            for (let scoreboard_botsingle_columndata_1d2 of scoreboard_botsingle_arraylistoftext_1d) {
+                serial.writeString("" + scoreboard_botsingle_columndata_1d2 + "|")
+            }
+            serial.writeLine("* C2<")
+        }
+    }
+})
+basic.forever(function () {
+    if (false) {
+        if (true) {
+            // // jwc 25-0210-1400 o network_DataPacket_Rcvd_FieldNames_ArrayListOfText = ["#", "L", "M"]
+            // // jwc y network_DataPacket_Rcvd_FieldNames_ArrayListOfText = ["A", "L", "R"]
+            network_DataPacket_Rcvd_FieldNames_ArrayListOfText = ["A", "L", "R"]
+            network_DataPacket_Rcvd_FieldNames_Login_ArrayListOfText = ["Z", "L", "R"]
+            if (false) {
+                scoreboard_ColumnFrontend_TitleNames_ArrayListOfText = [
+                "Bot#",
+                "Light+",
+                "Light=",
+                "Magnet+",
+                "Magnet="
+                ]
+                scoreboard_ColumnFrontend_TitleNames_ArrayListOfText = [
+                "Bot#",
+                "Servo_Motor: L",
+                "Servo_Motor: R",
+                "Light Sensor:",
+                "AI-Cam Sensor:"
+                ]
+            }
+            scoreboard_ColumnFrontend_TitleNames_ArrayListOfText = [
+            "Bot#",
+            "\"Wheel_L\"",
+            "\"Wheel_R\"",
+            "Light Sensor:",
+            "AI-Cam Sensor:",
+            ""
+            ]
+            scoreboard_ColumnBackend_FieldNames_ArrayListOfText = [
+            "B#",
+            "L+",
+            "L=",
+            "M+",
+            "M="
+            ]
+            scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D = [
+            scoreboard_ColumnBackend_FieldNames_ArrayListOfText[0],
+            "0",
+            scoreboard_ColumnBackend_FieldNames_ArrayListOfText[1],
+            "0",
+            scoreboard_ColumnBackend_FieldNames_ArrayListOfText[2],
+            "0",
+            scoreboard_ColumnBackend_FieldNames_ArrayListOfText[3],
+            "0",
+            scoreboard_ColumnBackend_FieldNames_ArrayListOfText[4],
+            "0"
+            ]
+            scoreboard_BotSingle_ArrayOfText_List_1D2 = []
+            scoreboard_BotsAll_ArrayListOfText_2D = []
+        }
+    }
+})
+basic.forever(function () {
+    if (false) {
+        if (keyvaluepair_key == network_DataPacket_Rcvd_FieldNames_ArrayListOfText[0]) {
+            scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[1] = keyvaluepair_value
+        } else if (keyvaluepair_key == network_DataPacket_Rcvd_FieldNames_ArrayListOfText[1]) {
+            quest_Note_1.quest_Show_String_For_Note_Small_Func(
+            "ML"
+            )
+            scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[3] = keyvaluepair_value
+            if (false) {
+                quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                "L="
+                )
+                scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[5] = keyvaluepair_value
+            }
+        } else if (keyvaluepair_key == network_DataPacket_Rcvd_FieldNames_ArrayListOfText[2]) {
+            quest_Note_1.quest_Show_String_For_Note_Small_Func(
+            "MR"
+            )
+            scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[4] = keyvaluepair_value
+            if (false) {
+                quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                "M+"
+                )
+                scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[7] = keyvaluepair_value
+                quest_Note_1.quest_Show_String_For_Note_Small_Func(
+                "M="
+                )
+                scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[9] = keyvaluepair_value
+            }
+        } else if (keyvaluepair_key == network_DataPacket_Rcvd_FieldNames_Login_ArrayListOfText[0]) {
+            scoreboard_BotSingle_KeyValuePairs_ArrayListOfText_1D[1] = keyvaluepair_value
+        } else {
+            if (false) {
+                serial.writeLine("*** ERROR: 2023-0517-1450: 'keyvaluepair_key' Not Recognized ***")
+            } else {
+                quest_Note_4.quest_Show_String_For_Note_Small_Func(
+                "Tolerated Error for Digital-Xay: Fix Later"
+                )
+                serial.writeString("* Key?: ")
+            }
+        }
     }
 })
 loops.everyInterval(5000, function () {
